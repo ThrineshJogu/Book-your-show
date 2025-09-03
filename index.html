@@ -1,98 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tollywood Movie Booking</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book My Show</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/2/21/BookMyShow_Logo.png" type="image/png">
   <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-    header { background: #222; color: #fff; padding: 1rem; text-align: center; }
-    .movies-container { display: flex; flex-wrap: wrap; justify-content: center; padding: 1rem; }
-    .movie-card { background: #fff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin: 1rem; max-width: 200px; overflow: hidden; transition: transform 0.2s; }
-    .movie-card:hover { transform: translateY(-5px); }
-    .movie-card img { width: 100%; height: 300px; object-fit: cover; }
-    .movie-info { padding: 0.5rem; }
-    .movie-info h3 { margin: 0.5rem 0 0.2rem; font-size: 1.1rem; }
-    .movie-info p { margin: 0.2rem 0; color: #555; font-size: 0.9rem; }
-    .buy-btn { background: #ff4e00; color: #fff; border: none; padding: 0.5rem; width: 100%; cursor: pointer; font-size: 1rem; border-radius: 0 0 8px 8px; }
-    .buy-btn:hover { background: #e74300; }
-    #booking-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; }
-    #booking-modal .modal-content { background: #fff; padding: 1rem; border-radius: 8px; width: 90%; max-width: 400px; }
-    #booking-modal label { display: block; margin: 0.5rem 0 0.2rem; }
-    #booking-modal input, #booking-modal select { width: 100%; padding: 0.5rem; margin-bottom: 0.8rem; }
-    .close-btn { background: #ccc; color: #333; border: none; padding: 0.5rem; cursor: pointer; border-radius: 4px; margin-right: 0.5rem; }
-    .confirm-btn { background: #28a745; color: #fff; border: none; padding: 0.5rem; cursor: pointer; border-radius: 4px; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      color: #333;
+    }
+
+    header {
+      background-color: #d32f2f;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 1.5rem;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 2rem;
+    }
+
+    .movie {
+      background-color: #fff;
+      width: 300px;
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .movie:hover {
+      transform: scale(1.05);
+    }
+
+    .movie img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .movie h2 {
+      margin-top: 0.5rem;
+      color: #d32f2f;
+    }
+
+    .movie p {
+      margin: 0.5rem 0;
+    }
+
+    .movie label,
+    .movie select,
+    .movie input {
+      margin: 0.3rem 0;
+      display: block;
+      width: 100%;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #388e3c;
+      color: white;
+      border: none;
+      margin-top: 10px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2e7d32;
+    }
+
+    footer {
+      background-color: #d32f2f;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
-  <header><h1>Tollywood Movie Ticket Booking</h1></header>
-  <div class="movies-container">
-    <div class="movie-card" data-movie="Sankranthiki Vasthunam">
-      <img src="https://via.placeholder.com/200x300?text=Sankranthi+Vasthunam" alt="Sankranthiki Vasthunam">
-      <div class="movie-info">
-        <h3>Sankranthiki Vasthunam</h3>
-        <p>Price: ₹250</p>
-        <p>Date: 14 Jan 2025</p>
-        <p>Time: 7:00 PM</p>
-      </div>
-      <button class="buy-btn">Book Now</button>
-    </div>
-    <div class="movie-card" data-movie="Game Changer">
-      <img src="https://via.placeholder.com/200x300?text=Game+Changer" alt="Game Changer">
-      <div class="movie-info">
-        <h3>Game Changer</h3>
-        <p>Price: ₹300</p>
-        <p>Date: 10 Jan 2025</p>
-        <p>Time: 8:00 PM</p>
-      </div>
-      <button class="buy-btn">Book Now</button>
-    </div>
-    <div class="movie-card" data-movie="Daaku Maharaaj">
-      <img src="https://via.placeholder.com/200x300?text=Daaku+Maharaaj" alt="Daaku Maharaaj">
-      <div class="movie-info">
-        <h3>Daaku Maharaaj</h3>
-        <p>Price: ₹280</p>
-        <p>Date: 12 Jan 2025</p>
-        <p>Time: 6:00 PM</p>
-      </div>
-      <button class="buy-btn">Book Now</button>
-    </div>
-    <!-- Add more cards as needed -->
-  </div>
+  <header>
+    <h1>🎟️ Book My Show</h1>
+  </header>
 
-  <div id="booking-modal">
-    <div class="modal-content">
-      <h2 id="modal-movie-title">Book Tickets</h2>
-      <label for="ticket-count">Number of Tickets:</label>
-      <input type="number" id="ticket-count" min="1" value="1">
-      <label for="show-time">Select Time:</label>
-      <select id="show-time">
-        <option>6:00 PM</option>
-        <option>7:00 PM</option>
-        <option>8:00 PM</option>
+  <main class="container">
+    <!-- Movie 1 -->
+    <div class="movie" data-title="Avengers: Endgame" data-price="250">
+      <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg" alt="Avengers: Endgame">
+      <h2>Avengers: Endgame</h2>
+      <p>Price: ₹250</p>
+      <label for="date1">Date:</label>
+      <input type="date" id="date1">
+      <label for="time1">Time:</label>
+      <select id="time1">
+        <option value="2:00 PM">2:00 PM</option>
+        <option value="6:00 PM">6:00 PM</option>
+        <option value="9:00 PM">9:00 PM</option>
       </select>
-      <button class="close-btn">Close</button>
-      <button class="confirm-btn">Confirm Booking</button>
+      <button onclick="bookTicket(this)">Book Now</button>
     </div>
-  </div>
+
+    <!-- Movie 2 -->
+    <div class="movie" data-title="Inception" data-price="220">
+      <img src="https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg" alt="Inception">
+      <h2>Inception</h2>
+      <p>Price: ₹220</p>
+      <label for="date2">Date:</label>
+      <input type="date" id="date2">
+      <label for="time2">Time:</label>
+      <select id="time2">
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="5:00 PM">5:00 PM</option>
+        <option value="8:00 PM">8:00 PM</option>
+      </select>
+      <button onclick="bookTicket(this)">Book Now</button>
+    </div>
+
+    <!-- Movie 3 -->
+    <div class="movie" data-title="Spider-Man: No Way Home" data-price="230">
+      <img src="https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg" alt="Spider-Man: No Way Home">
+      <h2>Spider-Man: No Way Home</h2>
+      <p>Price: ₹230</p>
+      <label for="date3">Date:</label>
+      <input type="date" id="date3">
+      <label for="time3">Time:</label>
+      <select id="time3">
+        <option value="3:00 PM">3:00 PM</option>
+        <option value="7:00 PM">7:00 PM</option>
+        <option value="10:00 PM">10:00 PM</option>
+      </select>
+      <button onclick="bookTicket(this)">Book Now</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 BookMyShow™ | All rights reserved.</p>
+  </footer>
 
   <script>
-    document.querySelectorAll('.buy-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.movie-card');
-        const movie = card.getAttribute('data-movie');
-        document.getElementById('modal-movie-title').innerText = 'Book: ' + movie;
-        document.getElementById('booking-modal').style.display = 'flex';
-      });
-    });
-    document.querySelector('.close-btn').addEventListener('click', () => {
-      document.getElementById('booking-modal').style.display = 'none';
-    });
-    document.querySelector('.confirm-btn').addEventListener('click', () => {
-      const count = document.getElementById('ticket-count').value;
-      alert('Successfully booked ' + count + ' tickets!');
-      document.getElementById('booking-modal').style.display = 'none';
-    });
+    function bookTicket(button) {
+      const movieCard = button.closest('.movie');
+      const movieTitle = movieCard.getAttribute('data-title');
+      const ticketPrice = movieCard.getAttribute('data-price');
+      const dateInput = movieCard.querySelector('input[type="date"]');
+      const timeSelect = movieCard.querySelector('select');
+
+      const date = dateInput.value;
+      const time = timeSelect.value;
+
+      if (!date) {
+        alert("Please select a date for your movie.");
+        return;
+      }
+
+      alert(`🎉 Booking Confirmed!\n\nMovie: ${movieTitle}\nDate: ${date}\nTime: ${time}\nPrice: ₹${ticketPrice}`);
+    }
   </script>
 </body>
 </html>
