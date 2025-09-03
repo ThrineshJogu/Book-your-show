@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Book My Show</title>
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/2/21/BookMyShow_Logo.png" type="image/png">
+  <title>Movie Ticket Booking</title>
   <style>
+    /* Basic Reset */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -19,7 +19,7 @@
     }
 
     header {
-      background-color: #d32f2f;
+      background-color: #ff6f61;
       color: white;
       text-align: center;
       padding: 1.5rem 0;
@@ -57,7 +57,7 @@
 
     .movie h2 {
       margin-top: 0.5rem;
-      color: #d32f2f;
+      color: #ff6f61;
     }
 
     .movie p {
@@ -75,7 +75,7 @@
     }
 
     button {
-      background-color: #388e3c;
+      background-color: #28a745;
       color: white;
       border: none;
       margin-top: 10px;
@@ -86,11 +86,11 @@
     }
 
     button:hover {
-      background-color: #2e7d32;
+      background-color: #218838;
     }
 
     footer {
-      background-color: #d32f2f;
+      background-color: #ff6f61;
       color: white;
       text-align: center;
       padding: 1rem 0;
@@ -100,15 +100,15 @@
 </head>
 <body>
   <header>
-    <h1>🎟️ Book My Show</h1>
+    <h1>🎬 Movie Ticket Booking</h1>
   </header>
 
   <main class="container">
     <!-- Movie 1 -->
-    <div class="movie" data-title="Avengers: Endgame" data-price="250">
-      <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg" alt="Avengers: Endgame">
+    <div class="movie" data-title="Avengers: Endgame" data-price="12">
+      <img src="https://m.media-amazon.com/images/I/81ExhpBEbHL._AC_UF894,1000_QL80_.jpg" alt="Avengers: Endgame">
       <h2>Avengers: Endgame</h2>
-      <p>Price: ₹250</p>
+      <p>Price: $12</p>
       <label for="date1">Date:</label>
       <input type="date" id="date1">
       <label for="time1">Time:</label>
@@ -121,10 +121,10 @@
     </div>
 
     <!-- Movie 2 -->
-    <div class="movie" data-title="Inception" data-price="220">
-      <img src="https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg" alt="Inception">
+    <div class="movie" data-title="Inception" data-price="10">
+      <img src="https://m.media-amazon.com/images/I/51s+o2bk1CL._AC_UF894,1000_QL80_.jpg" alt="Inception">
       <h2>Inception</h2>
-      <p>Price: ₹220</p>
+      <p>Price: $10</p>
       <label for="date2">Date:</label>
       <input type="date" id="date2">
       <label for="time2">Time:</label>
@@ -137,10 +137,10 @@
     </div>
 
     <!-- Movie 3 -->
-    <div class="movie" data-title="Spider-Man: No Way Home" data-price="230">
-      <img src="https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg" alt="Spider-Man: No Way Home">
+    <div class="movie" data-title="Spider-Man: No Way Home" data-price="11">
+      <img src="https://m.media-amazon.com/images/I/81NwS2Ek+KL._AC_UF1000,1000_QL80_.jpg" alt="Spider-Man: No Way Home">
       <h2>Spider-Man: No Way Home</h2>
-      <p>Price: ₹230</p>
+      <p>Price: $11</p>
       <label for="date3">Date:</label>
       <input type="date" id="date3">
       <label for="time3">Time:</label>
@@ -154,7 +154,7 @@
   </main>
 
   <footer>
-    <p>© 2025 BookMyShow™ | All rights reserved.</p>
+    <p>© 2025 MovieBooking Inc.</p>
   </footer>
 
   <script>
@@ -173,7 +173,7 @@
         return;
       }
 
-      alert(`🎉 Booking Confirmed!\n\nMovie: ${movieTitle}\nDate: ${date}\nTime: ${time}\nPrice: ₹${ticketPrice}`);
+      alert(`🎉 Booking Confirmed!\n\nMovie: ${movieTitle}\nDate: ${date}\nTime: ${time}\nPrice: $${ticketPrice}`);
     }
   </script>
 </body>
