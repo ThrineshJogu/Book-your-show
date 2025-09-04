@@ -1,5 +1,5 @@
-FROM httpd
-MAINTAINER Thrinesh aut6hor
+FROM httpd:alpine
+MAINTAINER Thrinesh author
 LABEL description A Dockerfile for Jenkins pipeline deploying static content with Nginx
 EXPOSE 80
-COPY . /usr/local/apache2/htdocs/
+COPY index.html /usr/local/apache2/htdocs/
