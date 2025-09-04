@@ -45,3 +45,52 @@ pipeline {
         }
     }
 }
+
+
+
+
+=============================================================================================================================================================
+
+
+
+
+1. Add Docker Hub credentials to Jenkins
+
+Go to:
+
+Jenkins Dashboard → Manage Jenkins → Credentials → (select scope, e.g., Global) → Add Credentials
+
+Kind: Username and password
+
+Username: your Docker Hub username
+
+Password: your Docker Hub password or access token
+
+ID: docker-hub-credentials (you can name it whatever you want)
+
+2. Modify your Jenkinsfile
+
+Here’s how to securely login, tag, and push:
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Login to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
+                }
+            }
+        }
+
+        stage('Tag & Push Image') {
+            steps {
+                sh '''
+                    docker tag img:v2 thrineshjogu/myrepo:newimage
+                    docker push thrineshjogu/myrepo:newimage
+                '''
+            }
+        }
+    }
+}
