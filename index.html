@@ -28,15 +28,23 @@
 
     .container {
       display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
       padding: 2rem;
+      gap: 2rem;
+    }
+
+    .movie-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10rem;
+      width: 100%;
     }
 
     .movie {
       background-color: #fff;
       width: 300px;
-      margin: 1rem;
       padding: 1rem;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -102,53 +110,108 @@
   <header>
     <h1>🎬 Book Your Show</h1>
   </header>
+
   <main class="container">
-    <!-- Movie 1 -->
-    <div class="movie" data-title="Avengers: Endgame" data-price="250">
-      <img src="https://m.media-amazon.com/images/I/81ExhpBEbHL._AC_UF894,1000_QL80_.jpg" alt="Avengers: Endgame">
-      <h2>Avengers: Endgame</h2>
-      <p>Price: Rs:250</p>
-      <label for="date1">Date:</label>
-      <input type="date" id="date1">
-      <label for="time1">Time:</label>
-      <select id="time1">
-        <option value="2:00 PM">2:00 PM</option>
-        <option value="6:00 PM">6:00 PM</option>
-        <option value="9:00 PM">9:00 PM</option>
-      </select>
-      <button onclick="bookTicket(this)">Book Now</button>
+    <!-- Row 1 -->
+    <div class="movie-row">
+      <!-- Movie 1 -->
+      <div class="movie" data-title="Avengers: Endgame" data-price="250">
+        <img src="https://m.media-amazon.com/images/I/81ExhpBEbHL._AC_UF894,1000_QL80_.jpg" alt="Avengers: Endgame">
+        <h2>Avengers: Endgame</h2>
+        <p>Price: Rs:250</p>
+        <label for="date1">Date:</label>
+        <input type="date" id="date1">
+        <label for="time1">Time:</label>
+        <select id="time1">
+          <option value="2:00 PM">2:00 PM</option>
+          <option value="6:00 PM">6:00 PM</option>
+          <option value="9:00 PM">9:00 PM</option>
+        </select>
+        <button onclick="bookTicket(this)">Book Now</button>
+      </div>
+
+      <!-- Movie 2 -->
+      <div class="movie" data-title="Inception" data-price="350">
+        <img src="https://picfiles.alphacoders.com/154/thumb-1920-154664.jpg" alt="Inception">
+        <h2>Inception</h2>
+        <p>Price: Rs:350</p>
+        <label for="date2">Date:</label>
+        <input type="date" id="date2">
+        <label for="time2">Time:</label>
+        <select id="time2">
+          <option value="1:00 PM">1:00 PM</option>
+          <option value="5:00 PM">5:00 PM</option>
+          <option value="8:00 PM">8:00 PM</option>
+        </select>
+        <button onclick="bookTicket(this)">Book Now</button>
+      </div>
+
+      <!-- Movie 3 -->
+      <div class="movie" data-title="RRR" data-price="300">
+        <img src="https://www.cinejosh.com/newsimg/newsmainimg/rrr-vies-for-golden-trailer-awards_b_0606231155.jpg" alt="RRR">
+        <h2>RRR</h2>
+        <p>Price: Rs:300</p>
+        <label for="date3">Date:</label>
+        <input type="date" id="date3">
+        <label for="time3">Time:</label>
+        <select id="time3">
+          <option value="3:00 PM">3:00 PM</option>
+          <option value="7:00 PM">7:00 PM</option>
+          <option value="10:00 PM">10:00 PM</option>
+        </select>
+        <button onclick="bookTicket(this)">Book Now</button>
+      </div>
     </div>
 
-    <!-- Movie 2 -->
-    <div class="movie" data-title="Inception" data-price="350">
-      <img src="https://picfiles.alphacoders.com/154/thumb-1920-154664.jpg" alt="Inception">
-      <h2>Inception</h2>
-      <p>Price: RS:350</p>
-      <label for="date2">Date:</label>
-      <input type="date" id="date2">
-      <label for="time2">Time:</label>
-      <select id="time2">
-        <option value="1:00 PM">1:00 PM</option>
-        <option value="5:00 PM">5:00 PM</option>
-        <option value="8:00 PM">8:00 PM</option>
-      </select>
-      <button onclick="bookTicket(this)">Book Now</button>
-    </div>
+    <!-- Row 2 -->
+    <div class="movie-row">
+      <!-- Movie 4 -->
+      <div class="movie" data-title="Interstellar" data-price="400">
+        <img src="https://m.media-amazon.com/images/I/91kFYg4fX3L._AC_UF1000,1000_QL80_.jpg" alt="Interstellar">
+        <h2>Interstellar</h2>
+        <p>Price: Rs:400</p>
+        <label for="date4">Date:</label>
+        <input type="date" id="date4">
+        <label for="time4">Time:</label>
+        <select id="time4">
+          <option value="12:00 PM">12:00 PM</option>
+          <option value="4:00 PM">4:00 PM</option>
+          <option value="8:00 PM">8:00 PM</option>
+        </select>
+        <button onclick="bookTicket(this)">Book Now</button>
+      </div>
 
-    <!-- Movie 3 -->
-    <div class="movie" data-title="RRR" data-price="300">
-      <img src="https://www.cinejosh.com/newsimg/newsmainimg/rrr-vies-for-golden-trailer-awards_b_0606231155.jpg" alt="RRR">
-      <h2>RRR</h2>
-      <p>Price: Rs:300</p>
-      <label for="date3">Date:</label>
-      <input type="date" id="date3">
-      <label for="time3">Time:</label>
-      <select id="time3">
-        <option value="3:00 PM">3:00 PM</option>
-        <option value="7:00 PM">7:00 PM</option>
-        <option value="10:00 PM">10:00 PM</option>
-      </select>
-      <button onclick="bookTicket(this)">Book Now</button>
+      <!-- Movie 5 -->
+      <div class="movie" data-title="Mahavatar Narsimha" data-price="300">
+        <img src="https://images.filmibeat.com/webp/ph-big/2025/07/mahavatar-narsimha1752499491_1.jpg" alt="Mahavatar Narsimha">
+        <h2>Mahavatar Narsimha</h2>
+        <p>Price: Rs:300</p>
+        <label for="date5">Date:</label>
+        <input type="date" id="date5">
+        <label for="time5">Time:</label>
+        <select id="time5">
+          <option value="2:00 PM">2:00 PM</option>
+          <option value="6:00 PM">6:00 PM</option>
+          <option value="10:00 PM">10:00 PM</option>
+        </select>
+        <button onclick="bookTicket(this)">Book Now</button>
+      </div>
+
+      <!-- Movie 6 -->
+      <div class="movie" data-title="KINGDOM" data-price="280">
+        <img src="https://i.redd.it/veuu14aujpze1.jpeg" alt="KINGDOM">
+        <h2>KINGDOM</h2>
+        <p>Price: Rs:280</p>
+        <label for="date6">Date:</label>
+        <input type="date" id="date6">
+        <label for="time6">Time:</label>
+        <select id="time6">
+          <option value="11:00 AM">11:00 AM</option>
+          <option value="3:00 PM">3:00 PM</option>
+          <option value="7:00 PM">7:00 PM</option>
+        </select>
+        <button onclick="bookTicket(this)">Book Now</button>
+      </div>
     </div>
   </main>
 
@@ -177,3 +240,4 @@
   </script>
 </body>
 </html>
+s
