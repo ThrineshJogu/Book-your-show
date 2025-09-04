@@ -1,0 +1,47 @@
+# This is a docker jenkins pipeline with image-build ,docker-credential , image tag and push , container stages
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/ThrineshJogu/one.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t img:v4 .'
+            }
+        }
+		stage('Login to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
+                }
+            }
+        }
+
+        stage('Tag & Push Image') {
+            steps {
+                sh '''
+                    docker tag img:v4 thrineshjogu/bookyourshow:image1
+                    docker push thrineshjogu/bookyourshow:image1
+                '''
+            }
+        }
+		
+        stage('Run Docker Container') {
+            steps {
+                sh 'docker run -itd --name container -p 22233:80 img:v4'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo ' hoo ray ! Pipeline execution completed successfully.'
+        }
+    }
+}
